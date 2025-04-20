@@ -8,6 +8,7 @@ sys.path.insert(0, str(project_root))
 
 from ingestion.extract import run_extract
 
+
 @multi_asset(
     outs={
         "chess_raw_stats": AssetOut(

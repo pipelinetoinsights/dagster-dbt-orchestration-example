@@ -1,4 +1,3 @@
-
 from dagster import define_asset_job, ScheduleDefinition
 
 weekly_project_job = define_asset_job(

@@ -17,8 +17,7 @@ defs = Definitions(
     schedules=[weekly_project_schedule],
     resources={
         "dbt": DbtCliResource(
-            project_dir=DBT_PROJECT_PATH,
-            profiles_dir=DBT_PROFILES_PATH
+            project_dir=DBT_PROJECT_PATH, profiles_dir=DBT_PROFILES_PATH
         )
     },
 )
