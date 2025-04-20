@@ -1,5 +1,3 @@
-# chess_pipeline/assets.py
-
 from dagster import AssetOut, Output, multi_asset, AssetExecutionContext, AssetKey
 import sys
 from pathlib import Path
