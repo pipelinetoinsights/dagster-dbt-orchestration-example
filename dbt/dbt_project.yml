@@ -33,7 +33,16 @@ models:
   dbt_chess:
     staging:
       +materialized: view
+      +meta:
+        dagster:
+          layer: stg_
     intermediate:
       +materialized: view
+      +meta:
+        dagster:
+          layer: int_
     marts:
       +materialized: table
+      +meta:
+        dagster:
+          layer: marts_
