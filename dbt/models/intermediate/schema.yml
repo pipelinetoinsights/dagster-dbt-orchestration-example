@@ -10,6 +10,16 @@ models:
           - not_null
       - name: score
         description: "Standardised result as a numeric value (1 = win, 0.5 = draw, 0 = loss)"
+      - name: wins
+        description: "Total number of blitz wins"
+      - name: losses
+        description: "Total number of blitz losses"
+      - name: draws
+        description: "Total number of blitz draws"
+      - name: time_per_move
+        description: "Average time per move (in seconds)"
+      - name: stats_updated_at
+        description: "UTC timestamp when this data was fetched"
 
   - name: int_chess__player_game_counts
     description: "Aggregated summary per player"

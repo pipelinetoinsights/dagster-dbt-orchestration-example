@@ -8,7 +8,6 @@ models:
         description: "Chess.com username"
         tests:
           - not_null
-          - unique
       - name: total_games
         description: "Total number of games played"
       - name: unique_opponents

@@ -14,7 +14,7 @@ stats as (
         draws,
         time_per_move,
         stats_updated_at
-    from {{ ref('stg_chess__raw_stats') }}
+    from {{ ref('int_chess__game_stats') }}
 
 ),
 
