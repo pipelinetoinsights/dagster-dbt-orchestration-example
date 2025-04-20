@@ -11,7 +11,10 @@ dbt_project = DbtProject(
 
 class CustomTranslator(DagsterDbtTranslator):
     def get_group_name(self, dbt_resource_props: Mapping[str, Any]) -> Optional[str]:
-        return "dbt_models"
+        meta = dbt_resource_props.get("meta", {})
+        dagster_meta = meta.get("dagster", {}) if isinstance(meta, dict) else {}
+
+        return dagster_meta.get("layer", "dbt_models")
     
 dbt_project.prepare_if_dev()
 
