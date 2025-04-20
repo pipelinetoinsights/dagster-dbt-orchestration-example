@@ -4,13 +4,14 @@ from ingestion.helpers import (
     extract_game_data,
     get_latest_month,
     load_to_postgres,
-    truncate_table
+    truncate_table,
 )
 from ingestion.db_config import get_pg_connection
 import pandas as pd
 
-def main():
-    usernames = extract_leaderboard_usernames(limit=50)
+
+def run_extract(limit: int = 50):
+    usernames = extract_leaderboard_usernames(limit=limit)
     all_stats = []
     all_games = []
 
@@ -32,15 +33,16 @@ def main():
 
     conn = get_pg_connection()
 
-    # Full refresh for stats (idempotent by truncation)
+    # Idempotent load for stats (truncate + insert)
     truncate_table(conn, "chess_raw_stats")
     load_to_postgres(stats_df, "chess_raw_stats", conn)
 
-    # Insert new game data, skipping duplicates
+    # Append new game data, deduplicated internally
     load_to_postgres(games_df, "chess_raw_games", conn)
 
     conn.close()
     print("✅ Extraction and loading complete.")
 
+
 if __name__ == "__main__":
-    main()
+    run_extract()
