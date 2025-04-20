@@ -1,4 +1,4 @@
-# Chess Analytics Pipeline
+# ELT Pipeline using PostgresSQL, dbt and Dagster
 
 This repository is prepared by [Pipeline To Insights](https://pipeline2insights.substack.com/) for tutorial purposes as part of: [Pipeline To Insights Data Engineering Interview Series](https://pipeline2insights.substack.com/t/interview-preperation)
 
