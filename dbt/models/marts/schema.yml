@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: mart_chess__player_summary
+    description: "Combined player-level summary metrics from games and stats"
+    columns:
+      - name: username
+        description: "Chess.com username"
+        tests:
+          - not_null
+          - unique
+      - name: total_games
+        description: "Total number of games played"
+      - name: unique_opponents
+        description: "Distinct opponents faced"
+      - name: avg_score
+        description: "Average score (1=win, 0.5=draw, 0=loss)"
+      - name: wins
+        description: "Raw win count from stats API"
+      - name: losses
+        description: "Raw loss count from stats API"
+      - name: draws
+        description: "Raw draw count from stats API"
+
+  - name: mart_chess__monthly_performance
+    description: "Monthly win/draw/loss breakdown per player"
+    columns:
+      - name: username
+        description: "Chess.com username"
+        tests:
+          - not_null
+      - name: month
+        description: "Truncated month of game end"
+        tests:
+          - not_null
+      - name: total_games
+        description: "Games played that month"
+      - name: wins
+        description: "Win count"
+      - name: draws
+        description: "Draw count"
+      - name: losses
+        description: "Loss count"

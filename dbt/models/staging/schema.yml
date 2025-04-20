@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: stg_chess__raw_stats
+    description: "Staging model that cleans and renames chess player stats"
+    columns:
+      - name: username
+        description: "Player's Chess.com username"
+        tests:
+          - not_null
+          - unique
+      - name: wins
+        description: "Total wins from blitz games"
+      - name: losses
+        description: "Total losses from blitz games"
+      - name: draws
+        description: "Total draws from blitz games"
+      - name: time_per_move
+        description: "Average move time in seconds"
+      - name: stats_updated_at
+        description: "Timestamp when stats were pulled"
+
+  - name: stg_chess__raw_games
+    description: "Staging model that cleans and flattens raw Chess.com games"
+    columns:
+      - name: username
+        description: "Primary player username"
+        tests:
+          - not_null
+      - name: opponent
+        description: "Opponent's username"
+        tests:
+          - not_null
+      - name: result
+        description: "Game result from the primary player's perspective"
+      - name: time_class
+        description: "Game format such as blitz or rapid"
+      - name: eco
+        description: "Opening classification (ECO code)"
+      - name: end_time
+        description: "Game end timestamp"
+        tests:
+          - not_null
+      - name: url
+        description: "Game URL"
+        tests:
+          - not_null

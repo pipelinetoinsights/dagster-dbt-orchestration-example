@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: int_chess__game_stats
+    description: "Enriched game-level stats including derived score"
+    columns:
+      - name: username
+        description: "Player"
+        tests:
+          - not_null
+      - name: score
+        description: "Standardised result as a numeric value (1 = win, 0.5 = draw, 0 = loss)"
+
+  - name: int_chess__player_game_counts
+    description: "Aggregated summary per player"
+    columns:
+      - name: username
+        description: "Player username"
+        tests:
+          - not_null
+          - unique
+      - name: total_games
+        description: "Number of games played"
+      - name: unique_opponents
+        description: "Number of unique opponents faced"
+      - name: avg_score
+        description: "Average score per game"

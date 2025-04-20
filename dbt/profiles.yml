@@ -1,0 +1,12 @@
+dbt_chess:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: your_username
+      password: 'your_passowrd'
+      port: 5432
+      dbname: your_db_name
+      schema: your_schema_name
+      threads: 4

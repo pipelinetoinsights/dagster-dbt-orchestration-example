@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: raw
+    database: postgres
+    schema: public
+    tables:
+      - name: chess_raw_stats
+        description: "Raw weekly stats per user pulled from Chess.com API"
+        columns:
+          - name: username
+            description: "Player's Chess.com username"
+          - name: wins
+            description: "Total number of blitz wins"
+          - name: losses
+            description: "Total number of blitz losses"
+          - name: draws
+            description: "Total number of blitz draws"
+          - name: time_per_move
+            description: "Average time per move (in seconds)"
+          - name: timestamp
+            description: "UTC timestamp when this data was fetched"
+
+      - name: chess_raw_games
+        description: "Raw monthly game data pulled from Chess.com API"
+        columns:
+          - name: username
+            description: "Primary player username"
+          - name: opponent
+            description: "Opponent's username"
+          - name: result
+            description: "Game result for the player (e.g. win, checkmated)"
+          - name: time_class
+            description: "Time format of the game (e.g. blitz, rapid)"
+          - name: eco
+            description: "ECO opening code"
+          - name: end_time
+            description: "Timestamp when the game ended"
+          - name: url
+            description: "URL to view the game"
